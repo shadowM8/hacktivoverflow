@@ -275,6 +275,7 @@ export default new Vuex.Store({
             icon: 'success'
           })
           context.commit('mutateQuestions', data)
+          context.dispatch('getAllQuestion')
         })
         .catch(err => {
           console.log(err)

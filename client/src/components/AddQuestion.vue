@@ -53,7 +53,7 @@ export default {
       this.redirect()
     },
     redirect() {
-      this.$router.push({ path: "/home/" })
+      this.$router.push({ path: "/" })
     }
   }
 };
