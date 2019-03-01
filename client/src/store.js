@@ -9,7 +9,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     questions: [],
-    username : '',
+    username : 'username',
     answers: [],
     isLogin: false,
     oneQuestion: {
@@ -64,7 +64,7 @@ export default new Vuex.Store({
       })
       .then(({data}) => {
         // context.commit('initialQuestions', data)
-        context.dispatch('goToQuestion', payload.id)
+        context.dispatch('goToQuestion', payload.questionId)
       })
       .catch(err => {
         console.log(err)
@@ -180,7 +180,7 @@ export default new Vuex.Store({
       })
         .then(({ data }) => {
           context.dispatch('goToQuestion', data._id)
-          // context.dispatch('getAllQuestion')
+          context.dispatch('getAllQuestion')
         })
         .catch(err => {
           console.log(err)
@@ -196,7 +196,7 @@ export default new Vuex.Store({
       })
         .then(({ data }) => {
           context.dispatch('goToQuestion', data._id)
-          // context.dispatch('getAllQuestion')
+          context.dispatch('getAllQuestion')
         })
         .catch(err => {
           console.log(err)
@@ -212,7 +212,7 @@ export default new Vuex.Store({
       })
         .then(({ data }) => {
           context.dispatch('goToQuestion', data._id)
-          // context.dispatch('getAllQuestion')
+          context.dispatch('getAllQuestion')
         })
         .catch(err => {
           console.log(err)
@@ -228,7 +228,7 @@ export default new Vuex.Store({
       })
         .then(({ data }) => {
           context.dispatch('goToQuestion', data._id)
-          // context.dispatch('getAllQuestion')
+          context.dispatch('getAllQuestion')
         })
         .catch(err => {
           console.log(err)

@@ -13,7 +13,7 @@
                 <v-btn @click="upVoteThisAnswer(answer)" flat :style="{color:upvoteColor}">
                   <v-icon>expand_less</v-icon>
                 </v-btn>
-                <v-btn flat color="red">{{answer.upvotes.length - answer.downvotes.length}}</v-btn>
+                <v-btn flat color="red">SCORE <br><br>{{answer.upvotes.length - answer.downvotes.length}}</v-btn>
                 <v-btn @click="downVoteThisAnswer(answer)" flat :style="{color:downvoteColor}">
                   <v-icon>expand_more</v-icon>
                 </v-btn>
@@ -36,11 +36,7 @@
             </v-flex>
             <v-flex xs1>
               <v-layout fill-height align-center>
-                <div v-if="userId === answer.createdBy._id">
-                  <a @click="editAnswer(answer._id)">
-                    <v-icon>edit</v-icon>
-                  </a>
-                </div>
+                <editanswer :answer="answer" />
               </v-layout>
             </v-flex>
             <v-flex xs1>
@@ -60,7 +56,11 @@
 </template>
 
 <script>
+import editanswer from "@/components/EditAnswer.vue";
 export default {
+  components: {
+    editanswer
+  },
   computed: {
     question() {
       return this.$store.state.oneQuestion;
@@ -69,11 +69,16 @@ export default {
   data() {
     return {
       userId: localStorage.getItem("id"),
-      upvoteColor: 'green',
-      downvoteColor: 'green'
+      upvoteColor: "green",
+      downvoteColor: "green"
+      // dialog: false
     };
   },
   methods: {
+    // closeDialog(event) {
+    //   console.log("ini emit", event);
+    //   this.dialog = event;
+    // },
     upVoteThisAnswer(answer) {
       let userId = localStorage.id;
       if (userId === answer.createdBy._id) {
@@ -89,12 +94,12 @@ export default {
         };
         if (answer.upvotes.indexOf(userId) === -1) {
           console.log(`upvote this ${answer._id}`);
-          this.upvoteColor = "red"
+          this.upvoteColor = "red";
           this.$store.dispatch("upVoteAnswerNow", dePayload);
         } else {
           console.log(`user ${userId} already upvote, so will cancel upvote`);
           this.$store.dispatch("removeUpvoteAnswerNow", dePayload);
-          this.upvoteColor = "green"
+          this.upvoteColor = "green";
         }
       }
     },
@@ -113,14 +118,14 @@ export default {
         };
         if (answer.downvotes.indexOf(userId) === -1) {
           console.log(`downvote this ${answer._id}`);
-          this.downvoteColor = "red"
+          this.downvoteColor = "red";
           this.$store.dispatch("downVoteAnswerNow", dePayload);
         } else {
           console.log(
             `user ${userId} already downvote, so will cancel downvote`
           );
           this.$store.dispatch("removeDownvoteAnswerNow", dePayload);
-          this.downvoteColor = "green"
+          this.downvoteColor = "green";
         }
       }
     },

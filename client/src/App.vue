@@ -15,7 +15,7 @@
             <v-icon>verified_user</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            User {{user}}
+            USER {{user}}
           </v-list-tile-content>
         </v-list-tile>
         
@@ -63,8 +63,8 @@ export default {
   data() {
     return {
       icons: ["dashboard", "home", "event"],
-      title : ["DASHBOARD","HOME","EVENT"],
-      page : ["/dashboard","/home", "event"],
+      title : ["DASHBOARD","HOME","TAG"],
+      page : ["/dashboard","/", "event"],
       
     };
   },

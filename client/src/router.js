@@ -34,10 +34,10 @@ export default new Router({
     ]
     },
     {
-      path: '/home',
+      path: '/',
       component: component2,
       children : [{
-        path : '/',
+        path : '',
         component : AllQuestion
       },{
         path : '/addQuestion',
@@ -51,7 +51,7 @@ export default new Router({
     {
       path: '/event',
       name: 'Page Three',
-      component: component3,
+      component: () => import(/* webpackChunkName: "about" */ '@/components/event.vue'),
     },
     // { path: '*', redirect: '/home' }
   ]

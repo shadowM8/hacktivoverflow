@@ -4,20 +4,17 @@
       <v-flex my-2 class="elevation-12" xs12 v-for="(question,index) in questions" :key="index">
         <v-card>
           <v-layout>
-            <v-flex xs2>
+            <v-flex xs1>
               <v-layout fill-height align-center justify-content-center row wrap>
-                <v-btn flat color="blue" disabled>
-                  <v-icon>expand_less</v-icon>
-                  
-                </v-btn>
-                <v-btn flat color="red">{{question.upvotes.length - question.downvotes.length}}</v-btn>
-                <v-btn flat color="blue" disabled>
-                  <v-icon>expand_more</v-icon>
-                  
-                </v-btn>
+                <v-btn flat color="blue">Vote<br><br>{{question.upvotes.length - question.downvotes.length}}</v-btn>
               </v-layout>
             </v-flex>
-            <v-flex xs8>
+            <v-flex xs1>
+              <v-layout fill-height align-center justify-content-center row wrap>
+                <v-btn flat color="blue">Answer<br><br>{{question.answers.length}}</v-btn>
+              </v-layout>
+            </v-flex>
+            <v-flex xs9>
               <v-layout>
                 <v-card-title primary-title>
                   <div>
@@ -29,15 +26,6 @@
                     <span class="grey--text">{{question.createdBy.name}}</span>
                   </div>
                 </v-card-title>
-              </v-layout>
-            </v-flex>
-            <v-flex xs1>
-              <v-layout fill-height align-center>
-                <div v-if="userId === question.createdBy._id">
-                  <a @click="editQuestion(question._id)">
-                    <v-icon>edit</v-icon>
-                  </a>
-                </div>
               </v-layout>
             </v-flex>
             <v-flex xs1>

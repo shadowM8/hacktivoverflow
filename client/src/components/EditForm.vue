@@ -30,12 +30,7 @@
 export default {
   data() {
     return {
-      // upvotes: 0,
-      // downvotes: 0
       userId: localStorage.getItem("id"),
-    //   title : this.question.title,
-    //   description : this.question.description
-    //   dialog: false
     };
   },
   methods : {
